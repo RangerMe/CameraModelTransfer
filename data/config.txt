@@ -1,0 +1,23 @@
+# This is a config file for model transfer
+# _help                 print help message or not, could be [tree] or [false]
+# _path_to_ori_model    required, path to model to be transfered
+# _path_to_save_model   optional, path to save calculated model
+# _target_model_type    target model type, could be:
+#                       1. UNIVERSAL
+#                       2. KANNALA_BRANDT
+# _show_offset          show disortion curve offset or not,could be [tree] or [false]
+# _log_level            log print level,could be:
+#                       0   print nothing
+#                       1   print result only
+#                       2   print everything
+# _curve_size           Curve size, could be [NULL] or [a number], by default, it is 1001
+# _curve_step           Curve step(angle), coule be [NULL] or [a number], by default, it is 0.1 degree
+
+_help = false
+_path_to_ori_model = camera_0_universal_4121.txt
+_path_to_save_model = camera_0_KANNALA_BRANDT_4121.txt
+_target_model_type = KANNALA_BRANDT
+_show_offset = false
+_log_level = 0
+_curve_size = NULL
+_curve_step = NULL
