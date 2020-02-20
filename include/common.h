@@ -4,7 +4,6 @@
 #include <math.h>
 #include <vector>
 #include <memory.h>
-#define DATA_PATH "E:/work/04_code/CameraModelTransfer/CameraModelTransfer/data"
 
 #define PI				(3.14159265358979323846264)
 #define DEG2RAD			(PI/180.0F)
@@ -16,9 +15,11 @@
 {                                                               \
 	printf("[Error %s %d] - " format "", __FUNCTION__, __LINE__,##__VA_ARGS__);  \
 }
-#define CLOG_I(format, ...)                                     \
-{                                                               \
-	printf("[Info %s %d] - " format "", __FUNCTION__, __LINE__,##__VA_ARGS__);   \
+#define CLOG_I(vb,format, ...)                                     				\
+{                                                               				\
+	if(vb <= LOG_LEVEL){														\
+		printf("[Info %s %d] - " format "", __FUNCTION__, __LINE__,##__VA_ARGS__);   \
+	}																			\
 }
 
 #define DEFAULT_CURVE_SIZE (1001)

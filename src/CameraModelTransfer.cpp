@@ -64,10 +64,6 @@ int main(int argc, char* argv[])
 	{
 		cfgFile.extractCfgValue(&cfg._show_offset,"_show_offset","NULL");
 	}
-	if(CONFIG_RET_SUCCESS != cfgFile.checkCfgValue("_log_level","NULL","NULL"))
-	{
-		cfgFile.extractCfgValue(&cfg._log_level,"_log_level","NULL");
-	}
 	if(CONFIG_RET_SUCCESS != cfgFile.checkCfgValue("_curve_size","NULL","NULL"))
 	{
 		cfgFile.extractCfgValue(&cfg._curve_size,"_curve_size","NULL");
@@ -110,7 +106,7 @@ int main(int argc, char* argv[])
 	if(cfg._path_to_save_model == "NULL")
 	{
 		cfg._path_to_save_model = cfg._path_to_ori_model+"_"+cfg._target_model_type;
-		CLOG_I("Output camera model will be saved at: \n%s\n",cfg._path_to_save_model.c_str());
+		CLOG_I(2,"Output camera model will be saved at: \n%s\n",cfg._path_to_save_model.c_str());
 	}
 
 	*pCamIntUni = loadCamInts(cfg._path_to_ori_model.c_str());
@@ -229,7 +225,7 @@ static void* modelTransfer(int32_t type, CamInt* cam)
 	{
 		case KANNALA_BRANDT:
 		{
-			CLOG_I("Converting to KANNALA_BRANDT ... ...\n");
+			CLOG_I(2,"Converting to KANNALA_BRANDT ... ...\n");
 			targetModel = new CamIntKannalaBrandt;
 			flagSuccess = fitKannalaBrandt((CamIntKannalaBrandt*)targetModel, cam, 5);
 			break;
@@ -238,7 +234,7 @@ static void* modelTransfer(int32_t type, CamInt* cam)
 	}
 	if (CFALSE == flagSuccess)
 	{
-		CLOG_I("Could not complete the transform\n");
+		CLOG_I(0,"Could not complete the transform\n");
 		targetModel = NULL;
 	}
 	return targetModel;
@@ -255,7 +251,7 @@ static void modelSave(const char* path, void*model, int32_t type)
 {
 	if (NULL == model)
 	{
-		CLOG_I("Model calculation error, exit\n");
+		CLOG_I(0,"Model calculation error, exit\n");
 	}
 	else
 	{
@@ -265,7 +261,7 @@ static void modelSave(const char* path, void*model, int32_t type)
 		{
 			CamInt modelSave;
 			memcpy(&modelSave, model, sizeof(CamInt));
-			CLOG_I("Saving to %s ... ...\n", path);
+			CLOG_I(1,"Saving to %s ... ...\n", path);
 			FILE* file2Save = fopen(path, "w+");
 			fprintf(file2Save, "# Following are all parameters required to describe a camera's intrinsic\n");
 			fprintf(file2Save, "# _TYPE             parameter type\n");
@@ -306,7 +302,7 @@ static void modelSave(const char* path, void*model, int32_t type)
 		{
 			CamIntKannalaBrandt modelSave;
 			memcpy(&modelSave, model, sizeof(CamIntKannalaBrandt));
-			CLOG_I("Saving to %s ... ...\n",path);
+			CLOG_I(1,"Saving to %s ... ...\n",path);
 			FILE* file2Save = fopen(path,"w+");
 			fprintf(file2Save, "# Following are all parameters required to describe a camera's intrinsic\n");
 			fprintf(file2Save, "# _TYPE             parameter type\n");
