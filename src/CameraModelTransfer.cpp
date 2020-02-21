@@ -223,6 +223,14 @@ static void* modelTransfer(int32_t type, CamInt* cam)
 	CFlags flagSuccess = CFALSE;
 	switch (type)
 	{
+		case UNIVERSAL:
+		{
+			CLOG_I(2,"Converting to UNIVERSAL ... ...\n");
+			targetModel = new CamInt;
+			memcpy(targetModel,cam,sizeof(CamInt));
+			flagSuccess = CTRUE;
+			break;
+		}
 		case KANNALA_BRANDT:
 		{
 			CLOG_I(2,"Converting to KANNALA_BRANDT ... ...\n");
