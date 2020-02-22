@@ -11,7 +11,6 @@ typedef struct _CFG_CMT
         _path_to_save_model = "NULL";
         _target_model_type = "NULL";
         _show_offset = "false";
-        _log_level = 0;
         _curve_size = 1001;
         _curve_step = 0.1;
     }
@@ -20,16 +19,31 @@ typedef struct _CFG_CMT
     string _path_to_save_model;
     string _target_model_type;
     string _show_offset;
-    int _log_level;
     int _curve_size;
     float _curve_step;
 }CFG_CMT;
 
 /**
+ * @brief validate inputs
+ * @param argc [in] number of input arguments 
+ * @param argv [in] input arguments values 
+ * @return result flag
+ */
+static bool inputValid(int argc, char** argv);
+/**
 * @brief print help message
 * @return void return
 */
 static void printHelp();
+
+/**
+ * @brief extract config terms from config file
+ * @param cfg  [out] extracted config terms
+ * @param argv [in]  input arguments values
+ * @return config terms extraction success or fail flag
+ */
+static bool extractCfg(CFG_CMT &cfg, char** argv);
+
 /**
 * @brief load camera int data from specific path
 * @param path [in] path to config file
@@ -53,4 +67,12 @@ static void* modelTransfer(int32_t type, CamInt* cam);
 * @return pointer to result
 */
 static void modelSave(const char* path, void*model, int32_t type);
+
+/**
+ * @brief show model disortion curves  
+ * @param oriCam [in] original camera model
+ * @param tgtCam [in] transfered camera model
+ * @return void return
+ */
+static void modelShow(CamInt* oriCam, void* tgtCam);
 #endif

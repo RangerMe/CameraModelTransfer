@@ -215,10 +215,10 @@ public:
 		{
 			ret = temp::formConfig(cfgValue,cfgString);
 		}
-		else
-		{
-			cfgValue = NULL;
-		}
+		// else
+		// {
+		// 	cfgValue = NULL;
+		// }
 		return ret;
 	}
 private:

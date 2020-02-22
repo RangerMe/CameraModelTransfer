@@ -22,3 +22,7 @@ file(GLOB FILE_SRC ${DIR_SRC}/*.cpp)
 
 # add executable
 add_executable(CamTransfer ${FILE_SRC})
+
+# dependencies - opencv
+find_package(OpenCV REQUIRED)
+target_link_libraries(CamTransfer ${OpenCV_LIBS})

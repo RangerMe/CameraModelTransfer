@@ -60,7 +60,7 @@ CFlags fitKannalaBrandt(CamIntKannalaBrandt* targetModel, CamInt* cam, int32_t o
 CFlags extractKannalaBrandt(CamInt* cam, CamIntKannalaBrandt* targetModel)
 {
 	CFlags ret = CTRUE;
-	memset(cam, 0, sizeof(CamInt));
+	//memset(cam, 0, sizeof(CamInt));
 	cam->imgH = targetModel->imgHeight;
 	cam->imgW = targetModel->imgWidth;
 	cam->c = 1;
@@ -73,6 +73,7 @@ CFlags extractKannalaBrandt(CamInt* cam, CamIntKannalaBrandt* targetModel)
 	cam->dCurve = new float[2 * DEFAULT_CURVE_SIZE];
 	for (int32_t idx = 0; idx < cam->dCurveSize;idx++)
 	{
+		*(cam->dCurve + 2 * idx) = 0;
 		*(cam->dCurve + 2 * idx) = idx*cam->dStep;
 		float32_t theta = idx*cam->dStep*DEG2RAD;
 		*(cam->dCurve + 2 * idx + 1) = 0.0F;
@@ -85,7 +86,7 @@ CFlags extractKannalaBrandt(CamInt* cam, CamIntKannalaBrandt* targetModel)
 	float32_t rv = targetModel->cv / targetModel->mv;
 	cam->fu = findAfromR(ru, cam);
 	cam->fv = findAfromR(rv, cam);
-	return ret;
+	return CTRUE;
 }
 
 /**

@@ -65,7 +65,7 @@ float32_t findAfromR(float32_t radius, CamInt* cam)
 		//the following is the tranditional half size searching.
 		CFlags flagFind = CFALSE;
 		int32_t idxTop = 0;
-		int32_t idxBottom = cam->dCurveSize;
+		int32_t idxBottom = cam->dCurveSize-1;
 		int32_t idxMid = 0;
 		int32_t idxFind = 0;
 		while ((CFALSE == flagFind) && (idxTop <= idxBottom))
