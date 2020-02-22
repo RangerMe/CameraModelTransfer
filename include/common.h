@@ -13,12 +13,12 @@
 
 #define CLOG_E(format, ...)                                     \
 {                                                               \
-	printf("[Error %s %d] - " format "", __FUNCTION__, __LINE__,##__VA_ARGS__);  \
+	printf("[Error %d] - " format "", __LINE__,##__VA_ARGS__);  \
 }
 #define CLOG_I(vb,format, ...)                                     				\
 {                                                               				\
 	if(vb <= LOG_LEVEL){														\
-		printf("[Info %s %d] - " format "", __FUNCTION__, __LINE__,##__VA_ARGS__);   \
+		printf("[Info %d] - " format "", __LINE__,##__VA_ARGS__);   \
 	}																			\
 }
 

@@ -5,7 +5,7 @@ Its function includes:
     * Universal 
     * Kannala Brandt model 
     * Mei (To be done)
-* Show two model's disortion curve (To be done)
+* Show two model's disortion curve
 ## Camera Models
 ### Universal
 The universal camera model uses following parameters and a disortion curve to describe a camera:
@@ -67,6 +67,7 @@ _target_model_type    target model type, could be:
                       1. UNIVERSAL
                       2. KANNALA_BRANDT
 _show_offset          show disortion curve offset
+_show_offset_path     path to save the disortion curve offset plot
                       or not,could be [tree] or 
                       [false]
 _curve_size           Curve size, could be [NULL] 
@@ -82,7 +83,8 @@ _help = false
 _path_to_ori_model = universal.txt
 _path_to_save_model = NULL
 _target_model_type = KANNALA_BRANDT
-_show_offset = false
+_show_offset = true
+_show_offset_path = offset.jpg
 _curve_size = NULL
 _curve_step = NULL
 ```

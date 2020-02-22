@@ -168,6 +168,10 @@ static bool extractCfg(CFG_CMT &cfg, char** argv)
 		{
 			cfgFile.extractCfgValue(&cfg._show_offset,"_show_offset","NoName");
 		}
+		if(CONFIG_RET_SUCCESS != cfgFile.checkCfgValue("_show_offset_path","NULL","NoName"))
+		{
+			cfgFile.extractCfgValue(&cfg._show_offset_path,"_show_offset_path","NoName");
+		}
 		if(CONFIG_RET_SUCCESS != cfgFile.checkCfgValue("_curve_size","NULL","NoName"))
 		{
 			cfgFile.extractCfgValue(&cfg._curve_size,"_curve_size","NoName");
@@ -455,13 +459,13 @@ static void modelShow(CamInt* oriCam, void* tgtCam)
 	}
 	float32_t finalError = sqrtf(error)/oriCam->dCurveSize;
 	CLOG_I(1,"The disortion curve offset error is %f\n",finalError);
-
 	// cvNamedWindow("Disortion Curve");
 	// cvShowImage("Disortion Curve",pImg);
 	
 	int params[2]={CV_IMWRITE_JPEG_QUALITY , 100}; 
-	cvSaveImage("offset.jpg",pImg,params);
+	cvSaveImage(gCFG._show_offset_path.c_str(),pImg,params);
 	cvReleaseImage(&pImg);
+	CLOG_I(1,"Disortion curve offset plot is save as %s\n",gCFG._show_offset_path.c_str());
 	delete tgtCamT->dCurve,tgtCamT;
 	return;
 }

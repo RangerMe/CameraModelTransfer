@@ -11,6 +11,7 @@ typedef struct _CFG_CMT
         _path_to_save_model = "NULL";
         _target_model_type = "NULL";
         _show_offset = "false";
+        _show_offset_path = "NULL";
         _curve_size = 1001;
         _curve_step = 0.1;
     }
@@ -19,6 +20,7 @@ typedef struct _CFG_CMT
     string _path_to_save_model;
     string _target_model_type;
     string _show_offset;
+    string _show_offset_path;
     int _curve_size;
     float _curve_step;
 }CFG_CMT;
