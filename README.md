@@ -42,7 +42,7 @@ To be done
 
 ## Build this project
 ### Dependencies
-Currently does not have any dependencies.
+* OpenCV
 ### Build
 ```
 cd CamTransfer
@@ -67,9 +67,10 @@ _target_model_type    target model type, could be:
                       1. UNIVERSAL
                       2. KANNALA_BRANDT
 _show_offset          show disortion curve offset
-_show_offset_path     path to save the disortion curve offset plot
                       or not,could be [tree] or 
                       [false]
+_show_offset_path     path to save the disortion 
+                      curve offset plot
 _curve_size           Curve size, could be [NULL] 
                       or [a number], by default, 
                       it is 1001
